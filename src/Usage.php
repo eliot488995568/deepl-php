@@ -74,8 +74,8 @@ class Usage
     public function anyLimitReached(): bool
     {
         $details = [
-            $this->character,
             $this->apiKeyCharacter,
+            $this->character,
             $this->document,
             $this->teamDocument,
             $this->speechToTextMinutes,
@@ -93,8 +93,8 @@ class Usage
     public function __toString(): string
     {
         $list = [
-            'Characters' => $this->character,
             'API key characters' => $this->apiKeyCharacter,
+            'Characters' => $this->character,
             'Documents' => $this->document,
             'Team documents' => $this->teamDocument,
             'Speech-to-text minutes' => $this->speechToTextMinutes,
