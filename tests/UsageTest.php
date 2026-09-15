@@ -65,7 +65,8 @@ JSON;
 
     public function testSpeechLimitReached()
     {
-        $json = str_replace('"speech_to_speech_minutes_count":12', '"speech_to_speech_minutes_count":600', self::PRO_RESPONSE);
+        $json = str_replace('"speech_to_speech_minutes_count": 12', '"speech_to_speech_minutes_count": 600', self::PRO_RESPONSE);
+        $this->assertNotEquals($json, self::PRO_RESPONSE);
         $this->assertTrue((new Usage($json))->anyLimitReached());
     }
 
