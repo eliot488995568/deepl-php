@@ -70,6 +70,17 @@ JSON;
         $this->assertTrue((new Usage($json))->anyLimitReached());
     }
 
+    public function testApiKeyAndAccountLimitReached()
+    {
+        $usage = new Usage(
+            '{"character_count":500001,"character_limit":500000,"api_key_character_count":500001,"api_key_character_limit":500000}'
+        );
+
+        $this->assertTrue($usage->character->limitReached());
+        $this->assertTrue($usage->apiKeyCharacter->limitReached());
+        $this->assertTrue($usage->anyLimitReached());
+    }
+
     public function testFreeAccountResponseUnchanged()
     {
         $usage = new Usage('{"character_count":180,"character_limit":500000}');
